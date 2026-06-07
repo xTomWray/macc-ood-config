@@ -1,0 +1,25 @@
+---
+cluster: "macc-hpc"
+
+attributes:
+  modules: ""
+  extra_jupyter_args: ""
+
+  bc_num_hours:
+    label: "Session duration"
+    value: 1
+    min: 1
+    max: 8
+    step: 1
+
+  bc_num_slots:
+    label: "CPU cores"
+    value: 1
+    min: 1
+    max: 4
+    step: 1
+
+form:
+  - bc_num_hours
+  - bc_num_slots
+  - extra_jupyter_args

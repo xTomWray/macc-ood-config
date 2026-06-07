@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+echo "TIMING - Starting JupyterLab at: $(date)"
+echo "HOSTNAME: $(hostname)"
+echo "USER: $(whoami)"
+
+cd "${HOME}"
+
+exec /opt/macc/apps/jupyter/bin/jupyter lab \
+  --config="${CONFIG_FILE}" \
+  <%= context.extra_jupyter_args %>

@@ -1,0 +1,11 @@
+---
+batch_connect:
+  template: "basic"
+  set_host: "host=$(hostname -s)"
+
+script:
+  native:
+    - "--partition=debug"
+    - "--nodes=1"
+    - "--ntasks=1"
+    - "--cpus-per-task=<%= bc_num_slots.blank? ? 1 : bc_num_slots.to_i %>"
