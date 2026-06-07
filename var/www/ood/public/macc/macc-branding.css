@@ -1,45 +1,182 @@
-/* MACC / Stevens OOD branding */
+/* ============================================================
+   MACC / Stevens OOD Branding — Turing HPC Portal
+   Design direction: Institutional Tech
+   Colors: Stevens Navy #0b1f3a · Stevens Red #9d2235
+   ============================================================ */
 
-/* Slightly cleaner dashboard spacing */
+/* [1] Color & shadow token system */
+:root {
+  --stevens-navy:  #0b1f3a;
+  --stevens-red:   #9d2235;
+  --mid-navy:      #1e3a5f;
+  --body-bg:       #f0f3f7;
+  --card-shadow:   rgba(11, 31, 58, 0.10);
+  --red-shadow:    rgba(157, 34, 53, 0.12);
+  --strip-bg:      #0d2444;
+}
+
+/* [2] Top accent stripe — 3px red→navy gradient at very top of viewport */
+body::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, var(--stevens-red) 0%, var(--stevens-navy) 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1200;
+}
+
+/* Compensate so navbar sits below the stripe */
 body {
-  background: #f7f8fa;
+  padding-top: 3px;
+  background-color: var(--body-bg);
+  /* [4] Subtle 24px dot-grid — circuit board motif */
+  background-image: radial-gradient(circle, rgba(11, 31, 58, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-/* Navbar branding */
+/* [3] Navbar */
 .navbar {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 12px rgba(11, 31, 58, 0.25);
+  border-bottom: 2px solid var(--stevens-red);
 }
 
-/* Dashboard cards */
+/* [5] Institution strip — injected by macc-header.js */
+.macc-institute-strip {
+  background: var(--strip-bg);
+  color: rgba(255, 255, 255, 0.65);
+  padding: 5px 1rem;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--stevens-red);
+}
+
+.macc-institute-strip i {
+  margin-right: 4px;
+  opacity: 0.7;
+}
+
+.macc-strip-sys {
+  color: rgba(255, 255, 255, 0.90);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* [6] Cards */
 .card {
-  border-radius: 0.75rem;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: none;
+  border-radius: 0.6rem;
+  box-shadow: 0 2px 8px var(--card-shadow);
 }
 
-/* Pinned app tiles */
+.card-header {
+  background: linear-gradient(90deg, rgba(11, 31, 58, 0.05) 0%, transparent 80%);
+  border-bottom: 1px solid rgba(11, 31, 58, 0.10);
+  font-weight: 700;
+  color: var(--stevens-navy);
+}
+
+/* [7] App tiles */
 .ood-app-card,
 .card.app {
-  transition: transform 0.08s ease-in-out, box-shadow 0.08s ease-in-out;
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .ood-app-card:hover,
 .card.app:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px var(--red-shadow);
 }
 
-/* Custom quick links widget */
+/* [8] Typography hierarchy */
+h1, h2, h3, h4, h5 {
+  color: var(--stevens-navy);
+  font-weight: 700;
+}
+
+/* [9] Buttons */
+.btn-primary {
+  background-color: var(--stevens-navy);
+  border-color: var(--stevens-navy);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--stevens-red);
+  border-color: var(--stevens-red);
+}
+
+/* [10] Quick links widget */
+.macc-quick-links-card {
+  border-left: 3px solid var(--stevens-red) !important;
+}
+
 .macc-widget-title {
   font-weight: 700;
-  margin-bottom: 0.75rem;
+  color: var(--stevens-navy);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .macc-quick-links a {
-  display: block;
-  padding: 0.45rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0;
   text-decoration: none;
+  color: #444;
+  font-size: 0.88rem;
+  border-bottom: 1px solid rgba(11, 31, 58, 0.06);
+  transition: color 0.1s;
+}
+
+.macc-quick-links a:last-child {
+  border-bottom: none;
+}
+
+.macc-quick-links a i {
+  color: var(--stevens-red);
+  width: 14px;
+  text-align: center;
+  flex-shrink: 0;
+  font-size: 0.8rem;
 }
 
 .macc-quick-links a:hover {
-  text-decoration: underline;
+  color: var(--stevens-red);
+  text-decoration: none;
+}
+
+.macc-cluster-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  background: var(--stevens-navy);
+  padding: 2px 7px;
+  border-radius: 3px;
+}
+
+/* [11] MOTD card — announcement styling */
+.motd .card,
+#motd .card {
+  background: linear-gradient(135deg, #f5f7fa 0%, #edf1f7 100%);
+  border-left: 4px solid var(--stevens-navy) !important;
+}
+
+/* [12] Focus rings — accessible, on-brand */
+a:focus,
+button:focus,
+.btn:focus {
+  outline: 2px solid var(--stevens-red);
+  outline-offset: 2px;
+  box-shadow: none;
 }

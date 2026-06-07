@@ -1,25 +1,33 @@
-<div class="card">
+<div class="card macc-quick-links-card">
   <div class="card-body">
-    <div class="macc-widget-title">MACC HPC Quick Links</div>
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <div class="macc-widget-title">Quick Links</div>
+      <span class="macc-cluster-badge">Turing Cluster</span>
+    </div>
 
     <div class="macc-quick-links">
       <a href="/pun/sys/files/fs/home/<%= ENV['USER'] %>">
+        <i class="fas fa-folder-open" aria-hidden="true"></i>
         Home Directory
       </a>
 
       <a href="/pun/sys/shell/ssh/macc-hpc">
-        Open Shell on MACC HPC
+        <i class="fas fa-terminal" aria-hidden="true"></i>
+        Open Shell on Turing
       </a>
 
       <a href="/pun/sys/dashboard/batch_connect/sessions">
+        <i class="fas fa-desktop" aria-hidden="true"></i>
         My Interactive Sessions
       </a>
 
       <a href="/pun/sys/myjobs">
+        <i class="fas fa-tasks" aria-hidden="true"></i>
         Job Composer
       </a>
 
       <a href="mailto:twray611@gmail.com">
+        <i class="fas fa-life-ring" aria-hidden="true"></i>
         Contact Support
       </a>
     </div>

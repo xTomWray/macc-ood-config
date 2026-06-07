@@ -1,12 +1,16 @@
-# MACC HPC Test Portal
+# Turing HPC Cluster — Test Portal
 
-Welcome to the MACC HPC Open OnDemand prototype.
+**Stevens MACC Research Laboratory** · School of Systems & Enterprises
 
-Current status:
-- Open OnDemand dashboard: online
-- Slurm test partition: debug
-- Job Composer: enabled
-- Jupyter and additional apps: in progress
+Welcome to the MACC Open OnDemand portal for the Turing compute cluster.
 
-Reminder:
-Use this VM for testing workflows only. Production storage, user auth, and GPU scheduling will be configured separately.
+| Component | Status |
+|-----------|--------|
+| OOD Dashboard | ✅ Online |
+| Slurm (debug partition) | ✅ Active |
+| Job Composer | ✅ Enabled |
+| Jupyter / Interactive Apps | 🔧 In progress |
+
+> **Note:** This instance is for testing workflows only. Production storage, multi-user auth, and GPU scheduling will be configured separately.
+
+Questions? Email [twray611@gmail.com](mailto:twray611@gmail.com) or visit the [MACC Lab site](https://sites.google.com/stevens.edu/macclab/).

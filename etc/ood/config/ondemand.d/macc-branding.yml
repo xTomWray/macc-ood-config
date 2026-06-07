@@ -3,7 +3,7 @@ dashboard_title: "MACC HPC OnDemand"
 
 # Put logo files under /var/www/ood/public/macc/
 dashboard_logo: "/public/macc/logo.svg"
-dashboard_logo_height: "38px"
+dashboard_logo_height: "44px"
 
 # Navbar colors
 navbar_type: "dark"
@@ -13,6 +13,10 @@ brand_link_active_bg_color: "#9d2235"
 # Load custom CSS last so it overrides dashboard defaults
 custom_css_files:
   - "/macc/macc-branding.css"
+
+# Load institution strip and branding JS
+custom_javascript_files:
+  - "/macc/macc-header.js"
 
 # Dashboard front page layout
 dashboard_layout:

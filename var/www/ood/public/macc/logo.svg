@@ -1,7 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="360" height="80" viewBox="0 0 360 80">
-  <rect width="360" height="80" rx="10" fill="#0b1f3a"/>
-  <text x="24" y="50" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#ffffff">
-    MACC HPC
-  </text>
-  <circle cx="315" cy="40" r="18" fill="#9d2235"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 44" width="240" height="44">
+  <!-- Simplified Stevens shield crest -->
+  <path d="M6 4 L22 4 L22 26 Q14 34 6 26 Z" fill="#9d2235"/>
+  <!-- Shield highlight: simplified building/tower -->
+  <rect x="11" y="13" width="6" height="9" fill="white" opacity="0.85"/>
+  <rect x="10" y="12" width="2" height="4" fill="white" opacity="0.85"/>
+  <rect x="16" y="12" width="2" height="4" fill="white" opacity="0.85"/>
+  <rect x="13" y="9" width="2" height="4" fill="white" opacity="0.85"/>
+  <!-- Shield base line -->
+  <line x1="6" y1="28" x2="22" y2="28" stroke="white" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- MACC wordmark -->
+  <text x="30" y="22"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="20"
+        font-weight="700"
+        fill="#ffffff"
+        letter-spacing="0.5">MACC</text>
+
+  <!-- HPC PORTAL sub-label -->
+  <text x="31" y="35"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="9"
+        font-weight="400"
+        fill="#e8a0ab"
+        letter-spacing="2.5">HPC PORTAL</text>
+
+  <!-- Vertical separator -->
+  <line x1="115" y1="10" x2="115" y2="34" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+  <!-- Turing system name -->
+  <text x="123" y="22"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="13"
+        font-weight="600"
+        fill="rgba(255,255,255,0.88)">Turing</text>
+  <text x="123" y="34"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="8"
+        font-weight="400"
+        fill="rgba(255,255,255,0.48)"
+        letter-spacing="1.5">CLUSTER</text>
 </svg>
