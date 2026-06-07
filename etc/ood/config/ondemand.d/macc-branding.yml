@@ -1,0 +1,48 @@
+---
+dashboard_title: "MACC HPC OnDemand"
+
+# Put logo files under /var/www/ood/public/macc/
+dashboard_logo: "/public/macc/logo.svg"
+dashboard_logo_height: "38px"
+
+# Navbar colors
+navbar_type: "dark"
+brand_bg_color: "#0b1f3a"
+brand_link_active_bg_color: "#9d2235"
+
+# Load custom CSS last so it overrides dashboard defaults
+custom_css_files:
+  - "/macc/macc-branding.css"
+
+# Dashboard front page layout
+dashboard_layout:
+  rows:
+    - columns:
+        - width: 8
+          widgets:
+            - pinned_apps
+            - motd
+        - width: 4
+          widgets:
+            - macc_quick_links
+
+# Pin common apps once they exist as system apps
+# Add/remove these as you build apps.
+pinned_apps:
+  - sys/jupyter
+  # - sys/code-server
+  # - sys/bc_desktop
+
+pinned_apps_menu_length: 8
+pinned_apps_group_by: category
+
+# Help menu additions
+help_menu:
+  - group: "MACC Lab"
+  - title: "Lab Documentation"
+    icon: "fas://book"
+    url: "https://www.stevens.edu/"
+    new_tab: true
+  - title: "Request Support"
+    icon: "fas://life-ring"
+    url: "mailto:twray611@gmail.com"

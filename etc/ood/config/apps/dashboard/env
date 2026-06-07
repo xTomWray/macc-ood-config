@@ -1,0 +1,4 @@
+
+# MACC dashboard MOTD
+MOTD_PATH="/etc/motd"
+MOTD_FORMAT="markdown"

@@ -1,0 +1,12 @@
+# MACC HPC Test Portal
+
+Welcome to the MACC HPC Open OnDemand prototype.
+
+Current status:
+- Open OnDemand dashboard: online
+- Slurm test partition: debug
+- Job Composer: enabled
+- Jupyter and additional apps: in progress
+
+Reminder:
+Use this VM for testing workflows only. Production storage, user auth, and GPU scheduling will be configured separately.

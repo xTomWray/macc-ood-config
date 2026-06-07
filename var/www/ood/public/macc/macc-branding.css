@@ -1,0 +1,45 @@
+/* MACC / Stevens OOD branding */
+
+/* Slightly cleaner dashboard spacing */
+body {
+  background: #f7f8fa;
+}
+
+/* Navbar branding */
+.navbar {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* Dashboard cards */
+.card {
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Pinned app tiles */
+.ood-app-card,
+.card.app {
+  transition: transform 0.08s ease-in-out, box-shadow 0.08s ease-in-out;
+}
+
+.ood-app-card:hover,
+.card.app:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+}
+
+/* Custom quick links widget */
+.macc-widget-title {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.macc-quick-links a {
+  display: block;
+  padding: 0.45rem 0;
+  text-decoration: none;
+}
+
+.macc-quick-links a:hover {
+  text-decoration: underline;
+}
