@@ -22,13 +22,13 @@ custom_javascript_files:
 dashboard_layout:
   rows:
     - columns:
+        - width: 4
+          widgets:
+            - macc_quick_links
         - width: 8
           widgets:
             - pinned_apps
             - motd
-        - width: 4
-          widgets:
-            - macc_quick_links
 
 # Pin common apps once they exist as system apps
 # Add/remove these as you build apps.
