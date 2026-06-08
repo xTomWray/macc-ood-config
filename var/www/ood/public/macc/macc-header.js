@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   strip.innerHTML =
     '<span class="macc-strip-inst">' +
       '<i class="fas fa-university" aria-hidden="true"></i>' +
-      ' Stevens Institute of Technology &nbsp;&middot;&nbsp; School of Systems &amp; Enterprises' +
+      ' Stevens Institute of Technology &nbsp;&middot;&nbsp; MACC Lab' +
     '</span>' +
     '<span class="macc-strip-sys">' +
       '<i class="fas fa-server" aria-hidden="true"></i>' +

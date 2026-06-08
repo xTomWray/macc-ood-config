@@ -45,7 +45,7 @@ help_menu:
   - group: "MACC Lab"
   - title: "Lab Documentation"
     icon: "fas://book"
-    url: "https://www.stevens.edu/"
+    url: "https://sites.google.com/stevens.edu/macclab/wiki?authuser=0"
     new_tab: true
   - title: "Request Support"
     icon: "fas://life-ring"

@@ -51,7 +51,8 @@ body {
   font-size: 11px;
   letter-spacing: 0.3px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 1.5rem;
   align-items: center;
   border-bottom: 2px solid var(--stevens-red);
 }
