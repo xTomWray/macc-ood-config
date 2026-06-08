@@ -1,0 +1,93 @@
+#!/usr/bin/bash -l
+
+<%
+working_dir = Pathname.new(context.working_dir.to_s)
+
+if context.working_dir.to_s.empty? || !working_dir.exist?
+  working_dir = Pathname.new(ENV.fetch("HOME"))
+elsif working_dir.file?
+  working_dir = working_dir.parent
+end
+%>
+
+set -euo pipefail
+
+DEFAULTS_DIR="/opt/macc/code-server-defaults"
+
+CODE_SERVER_DATAROOT="${HOME}/.local/share/code-server"
+CODE_SERVER_USER_DIR="${CODE_SERVER_DATAROOT}/User"
+CODE_SERVER_EXTENSIONS_DIR="${CODE_SERVER_DATAROOT}/extensions"
+
+mkdir -p \
+  "${CODE_SERVER_USER_DIR}" \
+  "${CODE_SERVER_USER_DIR}/snippets" \
+  "${CODE_SERVER_EXTENSIONS_DIR}"
+
+chmod 700 "${CODE_SERVER_DATAROOT}"
+
+# Copy default settings only for users who do not already have settings.
+if [[ ! -f "${CODE_SERVER_USER_DIR}/settings.json" ]] &&
+   [[ -f "${DEFAULTS_DIR}/User/settings.json" ]]; then
+  cp "${DEFAULTS_DIR}/User/settings.json" \
+     "${CODE_SERVER_USER_DIR}/settings.json"
+fi
+
+# Copy default keybindings only when absent.
+if [[ ! -f "${CODE_SERVER_USER_DIR}/keybindings.json" ]] &&
+   [[ -f "${DEFAULTS_DIR}/User/keybindings.json" ]]; then
+  cp "${DEFAULTS_DIR}/User/keybindings.json" \
+     "${CODE_SERVER_USER_DIR}/keybindings.json"
+fi
+
+# Add default snippets without overwriting user-created snippets.
+if [[ -d "${DEFAULTS_DIR}/User/snippets" ]]; then
+  rsync -a --ignore-existing \
+    "${DEFAULTS_DIR}/User/snippets/" \
+    "${CODE_SERVER_USER_DIR}/snippets/"
+fi
+
+# Install any required default extensions that this user is missing.
+if [[ -f "${DEFAULTS_DIR}/extensions.txt" ]]; then
+  installed_extensions="$(mktemp)"
+  trap 'rm -f "${installed_extensions}"' EXIT
+
+  /usr/bin/code-server \
+    --extensions-dir "${CODE_SERVER_EXTENSIONS_DIR}" \
+    --list-extensions 2>/dev/null |
+    tr '[:upper:]' '[:lower:]' |
+    sort -u > "${installed_extensions}"
+
+  while IFS= read -r extension; do
+    extension="${extension%%#*}"
+    extension="$(echo "${extension}" | xargs)"
+
+    [[ -z "${extension}" ]] && continue
+
+    if ! grep -Fxiq "${extension}" "${installed_extensions}"; then
+      echo "Installing default Code Server extension: ${extension}"
+
+      /usr/bin/code-server \
+        --extensions-dir "${CODE_SERVER_EXTENSIONS_DIR}" \
+        --install-extension "${extension}" ||
+        echo "WARNING: Could not install ${extension}"
+    fi
+  done < "${DEFAULTS_DIR}/extensions.txt"
+fi
+
+export PASSWORD="${password}"
+
+echo "Starting Code Server"
+echo "Host: $(hostname -s)"
+echo "Port: ${port}"
+echo "User: $(whoami)"
+echo "Working directory: <%= working_dir.to_s %>"
+
+/usr/bin/code-server \
+  --auth="password" \
+  --bind-addr="0.0.0.0:${port}" \
+  --disable-telemetry \
+  --ignore-last-opened \
+  --user-data-dir="${CODE_SERVER_DATAROOT}" \
+  --extensions-dir="${CODE_SERVER_EXTENSIONS_DIR}" \
+  --log="info" \
+  "<%= working_dir.to_s %>"
